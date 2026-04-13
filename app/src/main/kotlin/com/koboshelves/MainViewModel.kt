@@ -77,7 +77,7 @@ class MainViewModel : ViewModel() {
                 )
             }
             shelves = KoboShelfManager.createShelves(db, shelfMap)
-            db.execSQL("PRAGMA wal_checkpoint(TRUNCATE)")
+            db.rawQuery("PRAGMA wal_checkpoint(TRUNCATE)", null).close()
         } finally {
             db.close()
         }
